@@ -34,7 +34,7 @@ const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'qwen2.5:14b';
 const SEARXNG_URL = process.env.SEARXNG_URL || 'http://localhost:8888';
 const ANALYSIS_IMAGE = process.env.ANALYSIS_IMAGE || 'ollama-cli-analysis';
 const MAX_ITERATIONS = parseInt(process.env.MAX_AGENT_ITERATIONS || '15', 10);
-const NUM_CTX = parseInt(process.env.NUM_CTX || '8192', 10);
+const NUM_CTX = parseInt(process.env.NUM_CTX || '16384', 10);
 
 function createStack(modelOverride) {
   const cwd = process.cwd();

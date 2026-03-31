@@ -23,6 +23,7 @@ export class OllamaClient {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
+      signal: AbortSignal.timeout(180000), // 3 min timeout
     });
 
     if (!response.ok) {
