@@ -1,0 +1,25 @@
+{
+  "name": "ollama-cli",
+  "version": "2.0.0",
+  "description": "Security analysis CLI powered by Ollama - like Claude Code for security research",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "ollama-cli": "./index.js",
+    "sec": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "setup": "bash setup.sh"
+  },
+  "keywords": ["ollama", "security", "cli", "analysis"],
+  "author": "IceAgent (icepaule)",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^14.0.2",
+    "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.2",
+    "ora": "^8.2.0"
+  }
+}

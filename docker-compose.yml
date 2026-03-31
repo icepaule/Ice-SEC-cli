@@ -1,0 +1,30 @@
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: ollama-cli-searxng
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./docker/searxng/settings.yml:/etc/searxng/settings.yml:ro
+      - searxng-data:/etc/searxng
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8888
+    restart: unless-stopped
+    networks:
+      - ollama-cli
+
+  analysis:
+    build:
+      context: ./docker/analysis
+    image: ollama-cli-analysis
+    container_name: ollama-cli-analysis-builder
+    entrypoint: ["echo", "Analysis image built successfully"]
+    networks:
+      - ollama-cli
+
+volumes:
+  searxng-data:
+
+networks:
+  ollama-cli:
+    driver: bridge

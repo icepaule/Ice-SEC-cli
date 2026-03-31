@@ -1,0 +1,47 @@
+use_default_settings: true
+
+server:
+  secret_key: "ollama-cli-searxng-change-this-key"
+  bind_address: "0.0.0.0"
+  port: 8080
+
+search:
+  safe_search: 0
+  formats:
+    - html
+    - json
+  default_lang: "all"
+  autocomplete: "duckduckgo"
+
+ui:
+  default_theme: simple
+
+engines:
+  - name: google
+    engine: google
+    shortcut: g
+    disabled: false
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+    disabled: false
+  - name: github
+    engine: github
+    shortcut: gh
+    disabled: false
+  - name: stackoverflow
+    engine: stackoverflow
+    shortcut: so
+    disabled: false
+  - name: wikipedia
+    engine: wikipedia
+    shortcut: wp
+    disabled: false
+  - name: cve
+    engine: json_engine
+    shortcut: cve
+    paging: false
+    url: "https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch={query}"
+    content_query: "vulnerabilities[].cve.descriptions[0].value"
+    title_query: "vulnerabilities[].cve.id"
+    disabled: false
