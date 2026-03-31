@@ -24,26 +24,36 @@ An interactive command-line tool for security researchers, penetration testers, 
 - **Docker-based analysis**: Isolated security scanning with industry-standard tools
 - **Private web search**: Self-hosted SearXNG meta-search engine
 
-## Quick Start
+## One-Command Install (Ubuntu/Debian)
 
 ```bash
-# 1. Clone
-git clone https://github.com/icepaule/Ice-SEC-cli.git
-cd Ice-SEC-cli
+# Basic install (Ollama on localhost)
+curl -fsSL https://raw.githubusercontent.com/icepaule/Ice-SEC-cli/main/install.sh | bash
 
-# 2. Install dependencies
-npm install
+# With remote Ollama server
+curl -fsSL https://raw.githubusercontent.com/icepaule/Ice-SEC-cli/main/install.sh | bash -s -- --ollama-host 10.10.0.210
 
-# 3. Configure (set your Ollama server IP)
-cp .env.example .env
-nano .env    # Set OLLAMA_API_URL to your Ollama server
+# Full setup with Docker (SearXNG search + analysis containers)
+curl -fsSL https://raw.githubusercontent.com/icepaule/Ice-SEC-cli/main/install.sh | bash -s -- --ollama-host 10.10.0.210 --with-docker
+```
 
-# 4. Install globally
-npm link
+The installer handles everything: Node.js, git, dependencies, global `sec` command, and configuration.
 
-# 5. Use from any directory
+After install, use from any directory:
+```bash
 cd /path/to/your/code
 sec
+```
+
+### Manual Install
+
+```bash
+git clone https://github.com/icepaule/Ice-SEC-cli.git
+cd Ice-SEC-cli
+npm install
+cp .env.example .env    # edit OLLAMA_API_URL
+npm link                # installs 'sec' globally
+sec init                # creates ~/.config/ollama-cli/config.env
 ```
 
 ## Usage
